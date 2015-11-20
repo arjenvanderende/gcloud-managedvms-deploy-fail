@@ -1,0 +1,23 @@
+module: default
+runtime: custom
+vm: true
+api_version: 1
+
+automatic_scaling:
+  min_num_instances: 4
+  max_num_instances: 32
+  cool_down_period_sec: 300
+  cpu_utilization:
+    target_utilization: 0.5
+
+vm_settings:
+  machine_type: n1-standard-1
+
+handlers:
+
+- url: /favicon.ico
+  static_files: favicon.ico
+  upload: favicon.ico
+
+- url: /.*
+  script: dynamic
